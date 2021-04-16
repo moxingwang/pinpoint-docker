@@ -20,6 +20,4 @@ RUN  chmod a+x /usr/local/bin/configure-agent.sh \
     && sed -i "/Root level=/ s/=.*/=\"INFO\">/g" /pinpoint/agent/profiles/release/log4j2.xml \
     && rm -rf /var/cache/apt/*
 
-
-ENTRYPOINT ["/usr/local/bin/configure-agent.sh"]
 CMD ["tail", "-f", "/dev/null"]
