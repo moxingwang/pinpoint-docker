@@ -1,5 +1,5 @@
 # Usage
-- docker build .
+- docker build -t bosscloud-base-jre-8-apm-pinpoint:1.0.1  .
 - docker tag <oldImaeID> bosscloud-base-jre-8-apm-pinpoint:1.0.1
 
 ## get agent
