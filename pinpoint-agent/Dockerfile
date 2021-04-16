@@ -1,4 +1,4 @@
-FROM alpine:3.7
+FROM openjdk:8-jre
 
 LABEL maintainer="Roy Kim <roy.kim@navercorp.com>"
 
@@ -7,7 +7,7 @@ ARG INSTALL_URL=https://github.com/naver/pinpoint/releases/download/v${PINPOINT_
 
 COPY /build/scripts/configure-agent.sh /usr/local/bin/
 
-RUN apk add --update curl bash \
+RUN apt-get update \
     && chmod a+x /usr/local/bin/configure-agent.sh \
     && mkdir -p /pinpoint-agent \
     && chmod -R o+x /pinpoint-agent \
@@ -15,8 +15,8 @@ RUN apk add --update curl bash \
     && gunzip pinpoint-agent.tar.gz \
     && tar -xf pinpoint-agent.tar --strip 1 -C /pinpoint-agent \
     && rm pinpoint-agent.tar \
-    && apk del curl \
-    && rm /var/cache/apk/*
+    && apt-get remove curl \
+    && rm /var/cache/apt/*
 
 VOLUME ["/pinpoint-agent"]
 
