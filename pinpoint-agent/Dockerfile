@@ -15,6 +15,9 @@ RUN  chmod a+x /usr/local/bin/configure-agent.sh \
     && tar -xf /usr/local/pinpoint-agent-2.2.2.tar  -C /pinpoint \
     && mv /pinpoint/pinpoint-agent-2.2.2 /pinpoint/agent \
     && rm /usr/local/pinpoint-agent-2.2.2.tar \
+    && sed -i "/profiler.collector.ip=/ s/=.*/=127.1.11.1/" /pinpoint/agent/profiles/release/pinpoint.config \
+    && sed -i "/profiler.transport.grpc.collector.ip=/ s/=.*/=127.1.11.1/" /pinpoint/agent/profiles/release/pinpoint.config \
+    && sed -i "/Root level=/ s/=.*/=\"INFO\">/g" /pinpoint/agent/profiles/release/log4j2.xml \
     && rm -rf /var/cache/apt/*
 
 
