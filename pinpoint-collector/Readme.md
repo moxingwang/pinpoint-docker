@@ -1,3 +1,7 @@
+# Usage
+- docker build -t pinpoint-collector:1.0 .
+
+
 
 ## Pinpoint Collector
 
